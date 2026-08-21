@@ -1,0 +1,10 @@
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+# Runs the Next.js App Router (SSR, image optimization, headers) on Netlify.
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
