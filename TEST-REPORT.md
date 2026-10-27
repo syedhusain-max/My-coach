@@ -12,9 +12,9 @@ This report covers the required backend API validation and desktop/mobile browse
    - Symptom: Playwright tests timed out waiting for the dashboard URL, even though the app logic was fine, because a stale server instance was still occupying the expected port.
    - Fix: Stopped the stale server, removed any conflicting process state, and verified the app was started fresh before running the browser suite.
 
-2. Browser test flakiness caused by mixed server state during E2E execution
-   - Symptom: the signup flow would intermittently fail during UI automation because the app under test was not always being served from a clean instance.
-   - Fix: kept the test runner on a clean server lifecycle and ensured the app redirect after successful signup remained deterministic.
+2. Signup could be submitted before the client form handler hydrated
+   - Symptom: after navigating client-side from the landing page, an immediate submit could fall back to a normal form post and leave the browser on the signup page.
+   - Fix: keep the submit button disabled until the client component has hydrated, preventing submission before the handler is attached.
 
 3. Production startup validation gap
    - Symptom: `next start` reported that no production build existed until a fresh production build had been generated.
@@ -23,6 +23,10 @@ This report covers the required backend API validation and desktop/mobile browse
 4. Dashboard and stat stability rules
    - Symptom: progress metrics needed to be bounded and finite to avoid invalid values in edge cases.
    - Fix: verified the dashboard logic keeps progress rings within 0-100% and prevents `NaN` from appearing in the UI or test assertions.
+
+5. CI runner Node version did not match the project's verified runtime
+   - Symptom: the API test worker exited unexpectedly on the Node 20 GitHub Actions runner.
+   - Fix: align the workflow runtime with Node 24, then rerun the complete backend and desktop/mobile browser suites and production build.
 
 ## Test coverage
 ### Backend API tests

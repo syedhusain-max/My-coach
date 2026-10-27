@@ -2,14 +2,19 @@
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import { Activity, ArrowLeft, ArrowRight } from "lucide-react";
 
 export function AuthForm({ mode }: { mode: "signup" | "login" }) {
   const router = useRouter();
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const [hydrated, setHydrated] = useState(false);
   const signup = mode === "signup";
+
+  useEffect(() => {
+    setHydrated(true);
+  }, []);
 
   async function submitFromForm(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -145,7 +150,7 @@ export function AuthForm({ mode }: { mode: "signup" | "login" }) {
             )}
             <button
               type="submit"
-              disabled={loading}
+              disabled={loading || !hydrated}
               className="flex h-12 w-full items-center justify-center gap-2 rounded-xl bg-blue-600 px-5 text-sm font-bold text-white shadow-lg shadow-blue-600/20 transition hover:bg-blue-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-700 disabled:cursor-wait disabled:opacity-70"
             >
               {loading ? "Please wait…" : signup ? "Create account" : "Log in"}
