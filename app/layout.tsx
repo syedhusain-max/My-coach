@@ -9,13 +9,12 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Everfit — #1 Fitness and Wellness Coaching Platform",
+  title: "PulseFit — Train with purpose. Progress with confidence.",
   description:
-    "Unlock your full potential with the #1 platform to coach, scale, and win. Workout programming, nutrition, habit coaching and sport coaching in one place.",
+    "Build consistency, track your workouts, and make progress you can feel with PulseFit.",
   openGraph: {
-    title: "Everfit — #1 Fitness and Wellness Coaching Platform",
-    description:
-      "Unlock your full potential with the #1 platform to coach, scale, and win.",
+    title: "PulseFit — Train with purpose. Progress with confidence.",
+    description: "Build consistency, track your workouts, and make progress you can feel.",
     type: "website",
   },
 };

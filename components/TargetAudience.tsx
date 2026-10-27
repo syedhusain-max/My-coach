@@ -48,7 +48,7 @@ export function TargetAudience() {
           </ul>
 
           <a
-            href="#trial"
+            href="/signup"
             className="mt-9 inline-flex items-center gap-2 text-sm font-semibold text-brand-600 transition-colors hover:text-brand-500"
           >
             Start your 30-day free trial
@@ -69,7 +69,7 @@ export function TargetAudience() {
                 <span className="h-2.5 w-2.5 rounded-full bg-gray-300" />
                 <span className="h-2.5 w-2.5 rounded-full bg-gray-300" />
                 <span className="ml-3 text-[11px] font-medium text-gray-400">
-                  everfit.io / coach dashboard
+                  pulsefit.app / training dashboard
                 </span>
               </div>
 

@@ -1,12 +1,6 @@
 "use client";
 
-import { useRef } from "react";
-import {
-  motion,
-  useReducedMotion,
-  useScroll,
-  useTransform,
-} from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { Play, Sparkles } from "lucide-react";
 import { Marquee } from "./Marquee";
 
@@ -16,30 +10,21 @@ const LINE = {
 };
 
 export function Hero() {
-  const ref = useRef<HTMLElement>(null);
   const reduce = useReducedMotion();
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start start", "end start"],
-  });
-  const bgY = useTransform(scrollYProgress, [0, 1], ["0%", "22%"]);
-  const glowScale = useTransform(scrollYProgress, [0, 1], [1, 1.25]);
 
   return (
     <section
       id="top"
-      ref={ref}
       className="relative isolate overflow-hidden bg-gradient-to-b from-gray-950 via-gray-900 to-black pt-32 sm:pt-40"
     >
       {/* Parallax background: dot grid + gradient mesh */}
       <motion.div
         aria-hidden="true"
-        style={reduce ? undefined : { y: bgY }}
         className="pointer-events-none absolute inset-0 -z-10"
       >
         <div className="dot-grid absolute inset-0 opacity-70" />
         <motion.div
-          style={reduce ? undefined : { scale: glowScale }}
+          style={reduce ? undefined : { scale: 1.08 }}
           className="absolute left-1/2 top-[-14rem] h-[36rem] w-[36rem] -translate-x-1/2 rounded-full bg-brand-500/25 blur-[120px] animate-pulse-glow"
         />
         <div className="absolute -left-32 top-40 h-[26rem] w-[26rem] rounded-full bg-cyanish-500/15 blur-[110px]" />
@@ -82,7 +67,7 @@ export function Hero() {
               transition={{ duration: 0.6, ease: "easeOut" }}
               className="gradient-text block pb-2"
             >
-              To Level Up Your Business
+              PulseFit
             </motion.span>
           </h1>
 
@@ -101,10 +86,10 @@ export function Hero() {
             className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4"
           >
             <a
-              href="#trial"
+              href="/signup"
               className="btn-primary w-full px-8 py-4 text-base hover:scale-[1.02] sm:w-auto"
             >
-              Start Free Trial
+              Start Your Workout
             </a>
             <a
               href="#demo"

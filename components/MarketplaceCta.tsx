@@ -22,7 +22,7 @@ export function MarketplaceCta() {
             Marketplace
           </span>
           <h2 className="mt-5 text-3xl font-bold leading-[1.15] tracking-tight text-gray-950 sm:text-4xl lg:text-5xl">
-            Join the Everfit Marketplace
+            Join the PulseFit Community
           </h2>
           <p className="mt-5 max-w-lg text-base leading-relaxed text-gray-600">
             AI-powered matchmaking that ensures ideal client/trainer
@@ -71,7 +71,7 @@ export function MarketplaceCta() {
 
             <div className="absolute left-1/2 top-[46%] z-10 -translate-x-1/2 -translate-y-1/2">
               <div className="grid h-16 w-16 place-items-center rounded-2xl bg-gradient-to-br from-brand-500 to-cyanish-500 text-xs font-extrabold text-white shadow-xl shadow-brand-500/30 animate-float">
-                everfit
+                pulsefit
               </div>
             </div>
 

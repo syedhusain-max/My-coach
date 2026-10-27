@@ -24,7 +24,8 @@ export function Reveal({
 
   return (
     <motion.div
-      className={className}
+      className={className ? `${className} relative` : "relative"}
+      style={{ position: "relative" }}
       initial={reduce ? { opacity: 0 } : { opacity: 0, y }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once, margin: "-80px" }}
@@ -56,7 +57,8 @@ export function RevealGroup({
 
   return (
     <motion.div
-      className={className}
+      className={className ? `${className} relative` : "relative"}
+      style={{ position: "relative" }}
       variants={variants}
       initial="hidden"
       whileInView="show"
@@ -88,7 +90,11 @@ export function RevealItem({
   };
 
   return (
-    <motion.div className={className} variants={variants}>
+    <motion.div
+      className={className ? `${className} relative` : "relative"}
+      style={{ position: "relative" }}
+      variants={variants}
+    >
       {children}
     </motion.div>
   );

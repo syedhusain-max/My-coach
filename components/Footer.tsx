@@ -15,7 +15,7 @@ export function Footer() {
         <div className="grid grid-cols-2 gap-10 sm:grid-cols-3 lg:grid-cols-6">
           <div className="col-span-2 lg:col-span-2">
             <p className="text-xl font-extrabold tracking-tight text-white">
-              Everfit
+              PulseFit
             </p>
             <p className="mt-3 max-w-xs text-sm leading-relaxed text-gray-400">
               The #1 fitness and wellness coaching platform — everything you need
@@ -44,7 +44,7 @@ export function Footer() {
 
         <div className="mt-14 flex flex-col items-center justify-between gap-6 border-t border-white/10 pt-8 sm:flex-row">
           <p className="text-xs text-gray-500">
-            © {new Date().getFullYear()} Everfit. All rights reserved.
+            © {new Date().getFullYear()} PulseFit. All rights reserved.
           </p>
           <ul className="flex items-center gap-2">
             {SOCIALS.map(({ icon: Icon, label, href }) => (

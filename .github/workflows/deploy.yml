@@ -1,22 +1,16 @@
-name: Deploy to GitHub Pages
+name: PulseFit CI
 
 on:
   push:
     branches: [main]
+  pull_request:
   workflow_dispatch:
 
 permissions:
   contents: read
-  pages: write
-  id-token: write
-
-# Let a running deploy finish; queue at most one more.
-concurrency:
-  group: pages
-  cancel-in-progress: false
 
 jobs:
-  build:
+  validate:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -26,27 +20,7 @@ jobs:
           node-version: 20
           cache: npm
 
-      # Requires Settings > Pages > Source: "GitHub Actions" on the repo.
-      - name: Configure Pages
-        uses: actions/configure-pages@v5
-
       - run: npm ci
-
-      - name: Build static export
-        run: npm run build
-        env:
-          GITHUB_PAGES: "true"
-
-      - uses: actions/upload-pages-artifact@v3
-        with:
-          path: out
-
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - id: deployment
-        uses: actions/deploy-pages@v4
+      - run: npx playwright install --with-deps chromium
+      - run: npm run test:all
+      - run: npm run build

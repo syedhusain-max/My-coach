@@ -28,10 +28,10 @@ export function FinalCta() {
             motivate, and succeed!
           </p>
           <a
-            href="#signup"
+            href="/signup"
             className="mt-10 inline-flex items-center justify-center gap-2 rounded-full bg-brand-500 px-9 py-4 text-base font-semibold text-white shadow-[0_0_40px_-6px_rgba(59,130,246,0.75)] transition-all duration-200 hover:scale-[1.02] hover:bg-brand-600 hover:shadow-[0_0_60px_-4px_rgba(59,130,246,0.9)]"
           >
-            Start Free Trial
+            Start Your Workout
             <ArrowRight size={18} />
           </a>
           <p className="mt-5 text-xs text-gray-500">

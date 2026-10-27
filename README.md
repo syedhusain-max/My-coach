@@ -1,54 +1,67 @@
-# Everfit — Landing Page
+# PulseFit
 
-A pixel-faithful, production-ready clone of the Everfit.io marketing page.
+PulseFit pairs the original Everfit-inspired landing-page layout with a
+workout-tracking app. Athletes can create an account, choose from 30 exercises,
+build today's session, track sets and rest, and review streaks and weekly
+progress.
 
 ## Stack
 
-- **Next.js 14** (App Router, TypeScript)
-- **Tailwind CSS 3.4**
-- **Framer Motion 11** — hero stagger, scroll reveals, count-ups, hero parallax
-- **Lucide React** — all icons
-- **Inter** via `next/font/google` (self-hosted, no layout shift)
+- Next.js 14 App Router, React, TypeScript, and Tailwind CSS
+- SQLite (`better-sqlite3`) for persistent users, sessions, workouts, and sets
+- HttpOnly, SameSite=Lax session cookies; passwords are hashed with scrypt
+- Vitest and Supertest for API tests; Playwright for desktop and mobile browser tests
 
-## Run
+## Run locally
+
+Use Node.js 20 or newer.
 
 ```bash
 npm install
-npm run dev      # http://localhost:3000
-npm run build && npm start
+npm run dev
 ```
 
-## Structure
+Open [http://localhost:3000](http://localhost:3000). The SQLite database is
+created at `.data/pulsefit.sqlite` on first use. Set `PULSEFIT_DATABASE_PATH`
+to use a different database file.
 
-```
-app/
-  layout.tsx          Inter font, metadata
-  page.tsx            section order; below-fold sections are code-split
-  globals.css         Tailwind layers + .container-x/.btn-*/.gradient-text
-  icon.svg            favicon
-components/
-  Navbar.tsx          sticky, transparent → bg-white/80 backdrop-blur on scroll
-  Hero.tsx            dark gradient + parallax mesh, staggered headline, marquee
-  Marquee.tsx         CSS-only infinite logo loop (duplicated track, -50%)
-  BrandLogo.tsx       text-based partner brand marks
-  LogoMarquee.tsx     light logo carousel (grayscale → colour on hover)
-  ValueProposition.tsx    4 pillar cards with "AI POWERED" badges
-  ServicesBanner.tsx      centered statement + gradient rule
-  TargetAudience.tsx      split layout + dashboard mockup
-  FeatureSection.tsx      generic label/headline/grid section
-  FeatureSections.tsx     Plan & Coach · Motivate & Measure · Engage · Scale · Branding
-  Stats.tsx               glassmorphism testimonial/stat cards with count-up
-  MarketplaceCta.tsx      marketplace pitch + SVG matchmaking network
-  FinalCta.tsx            radial-gradient CTA with glowing button
-  Footer.tsx              5 columns + social row
-  Reveal.tsx              Reveal / RevealGroup / RevealItem scroll primitives
-  CountUp.tsx             rAF count-up on first view
-lib/content.ts        partner logos, nav links, stats, footer columns
+## Tests and production build
+
+```bash
+npm test              # API and streak/progress tests
+npm run test:e2e      # Chromium desktop and 375px iPhone-size flows
+npm run test:all      # Both suites
+npm run build         # Production build
+npm start             # Serve the production build
 ```
 
-## Notes
+Test suites use separate temporary databases and unique test accounts. They do
+not connect to the local development database.
 
-- Every animation is gated behind `prefers-reduced-motion`.
-- Marquees are pure CSS (no JS on the main thread); reveals use
-  `whileInView` with `once: true` so nothing re-runs on scroll-back.
-- Verified with no horizontal overflow at 320 / 375 / 768 / 1024 / 1440px.
+## Main routes
+
+- `/` — marketing landing page
+- `/signup`, `/login` — account creation and login
+- `/dashboard` — workout stats, streak, chart, rings, and today's plan
+- `/workouts` — searchable-by-group exercise library
+- `/workout/live` — set tracking, rest timer, and workout completion
+
+## API
+
+- `POST /api/auth/signup`, `POST /api/auth/login`, `POST /api/auth/logout`,
+  `GET /api/auth/me`
+- `GET /api/stats`, `GET /api/dashboard`, `GET /api/exercises?muscle=Chest`
+- `GET /api/workouts`, `POST /api/workouts`
+- `GET /api/workouts/:id`, `POST /api/workouts/:id/exercises`,
+  `POST /api/workouts/:id/start`, `POST /api/workouts/:id/complete`
+- `PATCH /api/sets/:id`
+
+Workout and set endpoints verify ownership before returning or changing data.
+
+## Hosting
+
+The app requires a Node.js server and writable persistent storage for SQLite.
+GitHub Pages can host only static files, so the former Pages deployment has
+been replaced with CI checks. GitHub remains the source repository; deploy the
+app to a Node-capable host with a persistent disk before enabling production
+traffic.

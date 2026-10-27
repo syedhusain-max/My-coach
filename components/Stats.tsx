@@ -78,17 +78,17 @@ export function Stats() {
                 320k+
               </p>
               <p className="mt-2 text-sm font-bold uppercase tracking-wide text-white/90">
-                Coaches on Everfit
+                Athletes on PulseFit
               </p>
               <p className="mt-4 text-sm leading-relaxed text-white/70">
                 Join the coaches who moved their programming, nutrition, and
                 payments into one platform.
               </p>
               <a
-                href="#trial"
+                href="/signup"
                 className="btn-primary mt-7 self-start hover:scale-[1.02]"
               >
-                Start Free Trial
+                Start Your Workout
               </a>
             </div>
           </RevealItem>

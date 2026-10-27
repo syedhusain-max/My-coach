@@ -6,3 +6,15 @@ out
 next-env.d.ts
 
 out/
+.data/
+.env*
+!.env.example
+*.sqlite
+*.sqlite-*
+*.db
+*.db-*
+*.pem
+*.key
+secrets/
+playwright-report/
+test-results/

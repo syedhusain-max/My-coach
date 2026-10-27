@@ -46,7 +46,7 @@ export const STATS: Stat[] = [
     suffix: "%",
     label: "free trial conversion rate",
     quote:
-      "Since using Everfit, our pipeline has strengthened significantly, and our free trial conversions have had a major impact on our top line.",
+      "Since using PulseFit, our pipeline has strengthened significantly, and our free trial conversions have had a major impact on our top line.",
     author: "Scott Deakins",
     role: "Founder and CEO of Under Par Performance Golf",
   },
@@ -56,7 +56,7 @@ export const STATS: Stat[] = [
     suffix: "%",
     label: "Client Retention",
     quote:
-      "Everfit has been the game-changer behind my growth from 50 to over 1900 clients.",
+      "PulseFit has been the game-changer behind my growth from 50 to over 1900 clients.",
     author: "Cori Leftkowith",
     role: "Founder of Redefining Strength",
   },
@@ -64,7 +64,7 @@ export const STATS: Stat[] = [
     value: 5000,
     label: "New clients in 30 days",
     quote:
-      "We ran our group program for the first time on Everfit, and it's been the most dreamy thing ever. The amount of retention is significantly higher than before.",
+      "We ran our group program for the first time on PulseFit, and it's been the most dreamy thing ever. The amount of retention is significantly higher than before.",
     author: "Rachel Henley",
     role: "Founder of Henley Fitness",
   },
@@ -73,7 +73,7 @@ export const STATS: Stat[] = [
     suffix: "+",
     label: "Hours Per Week Freed Up On Admin Tasks",
     quote:
-      "Everfit was integrating and constantly upgrading how we can make the experience better for clients and coaches.",
+      "PulseFit was integrating and constantly upgrading how we can make the experience better for clients and coaches.",
     author: "Brian Foley",
     role: "Founder of TRNDAY",
   },
@@ -82,7 +82,7 @@ export const STATS: Stat[] = [
     suffix: "x",
     label: "Increase In Revenue In First 3 Months.",
     quote:
-      "With Everfit, everything is all right there. It makes it easy to manage everything and see everything all in one platform.",
+      "With PulseFit, everything is all right there. It makes it easy to manage everything and see everything all in one platform.",
     author: "Brandon Woo",
     role: "Founder of Winning Mentality Fitness",
   },

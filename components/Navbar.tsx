@@ -45,7 +45,7 @@ export function Navbar() {
             onDark ? "text-white" : "text-gray-950",
           ].join(" ")}
         >
-          Everfit
+          PulseFit
         </a>
 
         <ul className="hidden items-center gap-9 md:flex">
@@ -68,7 +68,7 @@ export function Navbar() {
 
         <div className="hidden items-center gap-5 md:flex">
           <a
-            href="#login"
+            href="/login"
             className={[
               "text-sm font-medium transition-colors duration-200",
               onDark
@@ -79,10 +79,10 @@ export function Navbar() {
             Log In
           </a>
           <a
-            href="#trial"
+            href="/signup"
             className="btn-primary px-5 py-2.5 hover:scale-[1.02]"
           >
-            Start Free Trial
+            Start Your Workout
           </a>
         </div>
 
@@ -123,18 +123,18 @@ export function Navbar() {
                 </a>
               ))}
               <a
-                href="#login"
+                href="/login"
                 onClick={() => setOpen(false)}
                 className="rounded-lg px-2 py-3 text-base font-medium text-gray-800 hover:bg-gray-50"
               >
                 Log In
               </a>
               <a
-                href="#trial"
+                href="/signup"
                 onClick={() => setOpen(false)}
                 className="btn-primary mt-2 w-full"
               >
-                Start Free Trial
+                Start Your Workout
               </a>
             </div>
           </motion.div>

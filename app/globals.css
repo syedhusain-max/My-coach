@@ -80,6 +80,21 @@ body {
   background-size: 64px 64px;
 }
 
+.confetti-piece {
+  animation: confetti-fall 2.8s ease-in both;
+}
+
+@keyframes confetti-fall {
+  0% {
+    opacity: 1;
+    transform: translateY(0) rotate(0deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(460px) rotate(680deg);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -89,5 +104,8 @@ body {
   .animate-pulse-glow,
   .animate-float {
     animation: none !important;
+  }
+  .confetti-piece {
+    animation-duration: 0.01ms !important;
   }
 }
