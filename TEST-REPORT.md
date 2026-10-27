@@ -28,6 +28,10 @@ This report covers the required backend API validation and desktop/mobile browse
    - Symptom: the API test worker exited unexpectedly on the Node 20 GitHub Actions runner.
    - Fix: align the workflow runtime with Node 24, then rerun the complete backend and desktop/mobile browser suites and production build.
 
+6. Mobile browser project requested a browser not installed in CI
+   - Symptom: GitHub Actions installed Chromium, but the iPhone device profile attempted to launch WebKit.
+   - Fix: explicitly run the 375px mobile profile in Chromium, matching the browser installed by CI while preserving the iPhone-sized viewport.
+
 ## Test coverage
 ### Backend API tests
 - Signup success and failure cases
