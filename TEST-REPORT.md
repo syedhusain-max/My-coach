@@ -32,6 +32,10 @@ This report covers the required backend API validation and desktop/mobile browse
    - Symptom: GitHub Actions installed Chromium, but the iPhone device profile attempted to launch WebKit.
    - Fix: explicitly run the 375px mobile profile in Chromium, matching the browser installed by CI while preserving the iPhone-sized viewport.
 
+7. E2E set-ticking assertions raced asynchronous updates
+   - Symptom: the test clicked multiple sets before the prior update finished, so the UI correctly ignored overlapping updates and the progress assertion stayed below 100%.
+   - Fix: wait for each set's completed state before continuing to the next click.
+
 ## Test coverage
 ### Backend API tests
 - Signup success and failure cases

@@ -67,15 +67,21 @@ test("landing, signup, workout flow, persistence, and logout", async ({
   await expect(page.getByRole("heading", { name: "Stay in your flow." })).toBeVisible();
 
   await page.getByRole("button", { name: "Tick set 1 for Barbell bench press" }).click();
+  await expect(
+    page.getByRole("button", { name: "Untick set 1 for Barbell bench press" }),
+  ).toHaveAttribute("aria-pressed", "true");
   await expect(page.getByText("01:00")).toBeVisible();
   await expect(page.getByText("00:59")).toBeVisible({ timeout: 3_000 });
 
   for (const exercise of ["Barbell bench press", "Push-up"]) {
-    for (let set = 1; set <= 3; set += 1) {
-      const tick = page.getByRole("button", {
+    const firstSet = exercise === "Barbell bench press" ? 2 : 1;
+    for (let set = firstSet; set <= 3; set += 1) {
+      await page.getByRole("button", {
         name: `Tick set ${set} for ${exercise}`,
-      });
-      if (await tick.isVisible()) await tick.click();
+      }).click();
+      await expect(
+        page.getByRole("button", { name: `Untick set ${set} for ${exercise}` }),
+      ).toHaveAttribute("aria-pressed", "true");
     }
   }
   await expect(page.getByRole("progressbar")).toHaveAttribute("aria-valuenow", "100");
